@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Search</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+         body {
+            background-image: url("https://cdn.pixabay.com/photo/2018/03/04/09/51/space-3197611_1280.jpg");
+            color: #333;
+        }
+        .container {
+            margin-top: 50px;
+            background-color:burlywood;
+        }
+        @media (max-width: 576px) {
+            .container {
+                margin-top: 20px;
+            }
+        }
+        .custom-card {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .custom-card-header {
+            background-color: #337ab7;
+            color: #fff;
+        }
+        .custom-input {
+            background-color: #f8f8f8;
+            color: #333;
+            border: 1px solid #ccc;
+        }
+        .custom-button {
+            background-color: #337ab7;
+            color: #fff;
+        }
+        .custom-button:hover {
+            background-color: #286090;
+        }
+        .custom-logout-button {
+            background-color: #d9534f;
+            color: #fff;
+        }
+        .custom-logout-button:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+                <div class="card custom-card">
+                    <div class="card-header custom-card-header">
+                        <h4 class="text-center">Room Search</h4>
+                    </div>
+                    <div style="background-color: #f4f4f4;" class="card-body ">
+                        <form action="/roomdetails" method="post" >
+                            <div class="form-group">
+                                <label for="Check_in_date">Check-in Date</label>
+                                <input type="date" min="2023-06-15"    class="form-control custom-input" name="Check_in_date" required>
+                            </div>
+                            <p th:text="${errorMessage}" style="color: red;"></p>
+                            <div class="form-group">
+                                <label for="Check_out_date">Check-out Date</label>
+                                <input type="date"   min="2023-06-15"  class="form-control custom-input" name="Check_out_date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="number_of_adults">Adults</label>
+                                <input type="number" class="form-control custom-input" name="number_of_adults" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="number_of_children">Children</label>
+                                <input type="number" class="form-control custom-input" name="number_of_children" min="0" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block custom-button">Search</button>
+                        </form>
+                    </div>
+                    <div class="card-footer text-center">
+                        <form action="/afterLoginuser" method="get">
+                            <button type="submit" class="btn btn-danger custom-logout-button">Logout</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
